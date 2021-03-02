@@ -26,7 +26,7 @@ export default function App() {
       setImagePath(path);
     }
   };
-
+//Displays the front page of our app with all of the available units.
   if(screenNumber == 1){
     return (
       <ScrollView style={{backgroundColor: '#7CA1B4'}}>
@@ -109,6 +109,7 @@ export default function App() {
       </ScrollView>
     );
   }
+  //Displays the playmusic window with buttons "Play", "Back" and "Lyrics", and seek slider.
   else if(screenNumber == 2 || screenNumber == 23)
   {
     return (
@@ -160,6 +161,7 @@ export default function App() {
       </View>
     );
   }
+  //Displys our dummy lyrics and includes button "Back" which redirects to the previous window.
   else
   {
     return(
@@ -178,6 +180,7 @@ export default function App() {
   }
 };
 
+//Layouts for containers.
 const styles = StyleSheet.create({
   listButtons: {
     flex: 1,
