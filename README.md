@@ -10,8 +10,8 @@ Step 1: Install nodejs on your machine. Note: Download node version 12 or higher
         Use link: https://nodejs.org/en/download/  
 
 Step 2: Next, open your terminal and install expo-cli.  
-        Command Windows and Mac: npm i -g expo-cli 
-        Command for Mac: If permissions are not configured: sudo npm i -g expo-cli 
+        Command for Windows and Mac: npm i -g expo-cli 
+        Additional: For Mac - If permissions are not configured, use command: sudo npm i -g expo-cli 
 
 Step 3: Now install Expo Client on your phone from Appstore or Playstore.  
 
@@ -34,7 +34,7 @@ Step 8: Now from the GitHub repository, copy the contents of App.js file into th
         Lastly, download the dummy_pic.jpg from GitHub and upload it into the assets folder in VS code.
         
         “In VS code” means the left explorer window with the list of files and folders. 
-        Header.js should be in the location as App.js and dummy_pic.jpg should be in assets folder. 
+        Header.js should be in the same location as App.js and dummy_pic.jpg should be in the assets folder. 
 
 Step 9: For the project, we had to install additional packages.  
         In the terminal of VS code, use command: 
@@ -42,7 +42,8 @@ Step 9: For the project, we had to install additional packages.
         OR 
         npm install @react-native-community/slider --save 
 
-        If using iOS, install cocoapods using command: npx pod-install 
+        If using iOS, install cocoapods using command: npx pod-install
+        
         The above command installs a package for a slider bar for showing the progress in played music.  
 
 Step 10: In the text editor, click on view and then click on terminal. This should open the terminal inside your text editor.  
