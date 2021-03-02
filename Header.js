@@ -9,6 +9,7 @@ const Header = props => {
     );
 }
 
+//Layout for the container
 const styles = StyleSheet.create({
     header: {
         width: '100%',
