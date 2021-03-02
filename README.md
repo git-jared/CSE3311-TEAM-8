@@ -58,5 +58,4 @@ Step 12: Using your personal device is much easier than emulator.
         For iOS: Open camera and scan the QR code. This will open the Expo Client, run the app, and take you to the home screen.  
 
  
-From Project Developer,
 Enjoy “Physics Rocks”
