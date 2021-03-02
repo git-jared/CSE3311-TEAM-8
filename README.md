@@ -3,8 +3,9 @@
 # Project Vision
 # To design a music player application that delivers a dynamic learning experience on traditional physics subjects.
 
-# Getting Started
-
+-----------------
+Getting Started
+-----------------
 Step 1: Install nodejs on your machine. Note: Download node version 12 or higher. 
         Use link: https://nodejs.org/en/download/  
 
