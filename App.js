@@ -1,18 +1,22 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, View, Text, Alert, Image, Button, ScrollView } from 'react-native';
 
 //import statement for slider
 import Slider from '@react-native-community/slider';
 
-import Header from './Header';//'/./components/Header';
+import Header from './components/Header';
 
 const Separator=() => (<View style={styles.separator} />);
 
+
 export default function App() {
+
   const [unitNumber, setUnitNumber] = useState(0); 
   const [unitName, setUnitName] = useState('');
   const [imagepath, setImagePath] = useState();
   const [screenNumber, setScreenNumber] = useState(1);
+
+  const [isPlaying, setisPlaying] = useState(true); 
   
   //the value of the slider should be between 0 and 1
   const [sliderValue, setSliderValue] = useState(0);
@@ -26,6 +30,15 @@ export default function App() {
       setImagePath(path);
     }
   };
+
+  useEffect(() => console.log("re-reder because isPlaying changed:", isPlaying), [isPlaying])
+function handlePause () {
+  //console.log({isPlaying});
+  setisPlaying(false);
+  
+  //console.log({isPlaying});
+
+};
 //Displays the front page of our app with all of the available units.
   if(screenNumber == 1){
     return (
@@ -154,7 +167,7 @@ export default function App() {
           />
           <Button
             title="Pause"
-            onPress={() => {Alert.alert('Music Not added.')}}
+            onPress={() => handlePause()}
             color = "#ff4500"
           />
         </View>
