@@ -6,6 +6,8 @@ import Slider from '@react-native-community/slider';
 
 import Header from './components/Header';
 
+import {Audio} from 'expo-av';
+
 const Separator=() => (<View style={styles.separator} />);
 
 
@@ -31,12 +33,14 @@ export default function App() {
     }
   };
 
-  useEffect(() => console.log("re-reder because isPlaying changed:", isPlaying), [isPlaying])
+  //Prints the current state of isPlaying when it is rendered or re-rendered.
+  useEffect(() => console.log("re-render because isPlaying changed:", isPlaying), [isPlaying])
+//onClick function for PAUSE btn that sets the state of isPlaying to false using hooks.
 function handlePause () {
-  //console.log({isPlaying});
+  
   setisPlaying(false);
   
-  //console.log({isPlaying});
+  
 
 };
 //Displays the front page of our app with all of the available units.
