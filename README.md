@@ -9,8 +9,9 @@ Getting Started
 Step 1: Install nodejs on your machine. Note: Download node version 12 or higher. 
         Use link: https://nodejs.org/en/download/  
 
-Step 2: Next, open your terminal and install expo-cli.  
-        Command for Windows and Mac: npm i -g expo-cli 
+Step 2: Next, open your terminal and install expo-cli.
+
+        Command for Windows and Mac: npm i -g expo-cli
         Additional: For Mac - If permissions are not configured, use command: sudo npm i -g expo-cli 
 
 Step 3: Now install Expo Client(Andriod) or Expo Go(iOS) on your phone from Appstore or Playstore.  
