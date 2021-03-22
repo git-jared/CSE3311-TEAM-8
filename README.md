@@ -31,10 +31,12 @@ Step 7: Now, in the terminal open the newly created project folder: cd ProjectNa
 
 Step 8: Now from the GitHub repository, copy the contents of App.js file into the existing App.js file in VS code.
         Create a new Header.js file in your VS code and copy the contents of Header.js from GitHub into the newly created file.
-        Lastly, download the dummy_pic.jpg from GitHub and upload it into the assets folder in VS code.
+        Lastly, download the dummy_pic.jpg, songs folder, and lyrics.json file from GitHub and upload it into the assets folder in VS code.
         
-        “In VS code” means the left explorer window with the list of files and folders. 
-        Header.js should be in the same location as App.js and dummy_pic.jpg should be in the assets folder. 
+        Note:
+        “In VS code” means the left explorer window with the list of files and folders. You could also go into the actual project through File Explorer and change the files.
+        Header.js should be in the same location as App.js,
+        dummy_pic.jpg, songs folder, and lyrics.json should be in the assets folder.
 
 Step 9: For the project, we had to install additional packages.  
         In the terminal of VS code, use command: 
@@ -45,12 +47,18 @@ Step 9: For the project, we had to install additional packages.
         If using iOS, install cocoapods using command: npx pod-install
         
         The above command installs a package for a slider bar for showing the progress in played music.  
+        
+        Next, you need to install expo-av
+        In the terminal of VS code, use command:  expo install expo-av
+        
+        The above command installs expo audio API and allows you to implement audio playback and recording in your app.
 
 Step 10: In the text editor, click on view and then click on terminal. This should open the terminal inside your text editor.  
 
 Step 11: In the terminal (opened in text editor), use command: npm start 
 
-         This should start Metro Bundler on your browser. The Metro Bundler gives you options on where you want to run the app (emulator or actual device). 
+         This should start Metro Bundler on your browser. The Metro Bundler gives you options on where you want to run the app (emulator or browser or actual device).
+         The easiest way would be to open it in a browser but because the app was designed for smaller phone screen, it won't look pretty. 
          Step 3 asks to install Expo Client or Expo Go on your phone, so further instructions will be on how to run the app in you android or iOS device.   
 
 Step 12: Using your personal device is much easier than emulator. 
