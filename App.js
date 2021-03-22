@@ -4,7 +4,7 @@ import { StyleSheet, View, Text, Alert, Image, Button, ScrollView } from 'react-
 //import statement for slider
 import Slider from '@react-native-community/slider';
 
-import Header from './Header';//'/./components/Header';
+import Header from './components/Header';
 
 const Separator=() => (<View style={styles.separator} />);
 
@@ -26,7 +26,7 @@ export default function App() {
       setImagePath(path);
     }
   };
-//Displays the front page of our app with all of the available units.
+
   if(screenNumber == 1){
     return (
       <ScrollView style={{backgroundColor: '#7CA1B4'}}>
@@ -34,74 +34,74 @@ export default function App() {
         <View style={styles.listButtons}>
           <Separator />
           <Button 
-              title="Unit 1"
-              onPress={() => button_Clicked(1, 2, "Unit 1", require("./assets/dummy_pic.jpg"))}   
+              title="THE MOTION HIGHWAY"
+              onPress={() => button_Clicked(1, 2, "THE MOTION HIGHWAY", require("./assets/dummy_pic.jpg"))}   
               color = "#ff4500"
           />
           <Separator />
           <Button 
-              title="Unit 2"
-              onPress={() => button_Clicked(2, 2, "Unit 2", require("./assets/dummy_pic.jpg"))}
+              title="FREE FALL"
+              onPress={() => button_Clicked(2, 2, "FREE FALL", require("./assets/dummy_pic.jpg"))}
               color = "#ff4500"
           />
           <Separator />
           <Button 
-              title="Unit 3"
-              onPress={() => button_Clicked(3, 2, "Unit 3", require("./assets/dummy_pic.jpg"))}
+              title="TRIGOMETRIC BLUES"
+              onPress={() => button_Clicked(3, 2, "TRIGOMETRIC BLUES", require("./assets/dummy_pic.jpg"))}
               color = "#ff4500"
           />
           <Separator />
           <Button 
-              title="Unit 4"
-              onPress={() => button_Clicked(4, 2, "Unit 4", require("./assets/dummy_pic.jpg"))}
+              title="THE FORCE"
+              onPress={() => button_Clicked(4, 2, "THE FORCE", require("./assets/dummy_pic.jpg"))}
               color = "#ff4500"
           />
           <Separator />
           <Button 
-              title="Unit 5"
-              onPress={() => button_Clicked(5, 2, "Unit 5", require("./assets/dummy_pic.jpg"))}
+              title="ENERGY IS CONSERVED"
+              onPress={() => button_Clicked(5, 2, "ENERGY IS CONSERVED", require("./assets/dummy_pic.jpg"))}
               color = "#ff4500"
           />
           <Separator />
           <Button 
-              title="Unit 6"
-              onPress={() => button_Clicked(6, 2, "Unit 6", require("./assets/dummy_pic.jpg"))}
+              title="MOMENTUM"
+              onPress={() => button_Clicked(6, 2, "MOMENTUM", require("./assets/dummy_pic.jpg"))}
               color = "#ff4500"
           />
           <Separator />
           <Button 
-              title="Unit 7"
-              onPress={() => button_Clicked(7, 2, "Unit 7", require("./assets/dummy_pic.jpg"))}
+              title="IT'S GOING ROUND IN CIRCLES"
+              onPress={() => button_Clicked(7, 2, "IT'S GOING ROUND IN CIRCLES", require("./assets/dummy_pic.jpg"))}
               color = "#ff4500"
           />
           <Separator />
           <Button 
-              title="Unit 8"
-              onPress={() => button_Clicked(8, 2, "Unit 8", require("./assets/dummy_pic.jpg"))}
+              title="ELECTROSTATIC SHUFFLE"
+              onPress={() => button_Clicked(8, 2, "ELECTROSTATIC SHUFFLE", require("./assets/dummy_pic.jpg"))}
               color = "#ff4500"
           />
           <Separator />
           <Button 
-              title="Unit 9"
-              onPress={() => button_Clicked(9, 2, "Unit 9", require("./assets/dummy_pic.jpg"))}
+              title="OHM'S LAW"
+              onPress={() => button_Clicked(9, 2, "OHM'S LAW", require("./assets/dummy_pic.jpg"))}
               color = "#ff4500"
           />
           <Separator />
           <Button 
-              title="Unit 10"
-              onPress={() => button_Clicked(10, 2, "Unit 10", require("./assets/dummy_pic.jpg"))}
+              title="THE RIGHT HAND RULES"
+              onPress={() => button_Clicked(10, 2, "THE RIGHT HAND RULES", require("./assets/dummy_pic.jpg"))}
               color = "#ff4500"
           />
           <Separator />
           <Button 
-              title="Unit 11"
-              onPress={() => button_Clicked(11, 2, "Unit 11", require("./assets/dummy_pic.jpg"))}
+              title="WAVES"
+              onPress={() => button_Clicked(11, 2, "WAVES", require("./assets/dummy_pic.jpg"))}
               color = "#ff4500"
           />
           <Separator />
           <Button 
-              title="Unit 12"
-              onPress={() => button_Clicked(12, 2, "Unit 12", require("./assets/dummy_pic.jpg"))}
+              title="LET THERE BE LIGHT"
+              onPress={() => button_Clicked(12, 2, "LET THERE BE LIGHT", require("./assets/dummy_pic.jpg"))}
               color = "#ff4500"
           />
           <Separator />
@@ -109,7 +109,6 @@ export default function App() {
       </ScrollView>
     );
   }
-  //Displays the playmusic window with buttons "Play", "Back" and "Lyrics", and seek slider.
   else if(screenNumber == 2 || screenNumber == 23)
   {
     return (
@@ -161,7 +160,6 @@ export default function App() {
       </View>
     );
   }
-  //Displys our dummy lyrics and includes button "Back" which redirects to the previous window.
   else
   {
     return(
@@ -174,13 +172,62 @@ export default function App() {
           />
         </View>
         <Text style={styles.textTitle}>{unitName}</Text>
-        <Text style={{ paddingLeft: 20, paddingRight: 20, paddingTop: 20 }}>{'a'.repeat(3000)}</Text>
+        switch(unitName) { 
+          case "THE MOTION HIGHWAY": 
+            <Text style={{ paddingLeft: 20, paddingRight: 20, paddingTop: 20 }}>{require("./assets/01.txt")}</Text>;
+            break;
+          
+          case "FREE FALL": 
+            <Text style={{ paddingLeft: 20, paddingRight: 20, paddingTop: 20 }}>{require("./assets/02.txt")}</Text>;
+            break;
+
+          case "TRIGOMETRIC BLUES": 
+            <Text style={{ paddingLeft: 20, paddingRight: 20, paddingTop: 20 }}>{require("./assets/03.txt")}</Text>;
+            break;
+          
+          case "THE FORCE": 
+            <Text style={{ paddingLeft: 20, paddingRight: 20, paddingTop: 20 }}>{require("./assets/04.txt")}</Text>;
+            break;
+          
+          case "ENERGY IS CONSERVED": 
+            <Text style={{ paddingLeft: 20, paddingRight: 20, paddingTop: 20 }}>{require("./assets/05.txt")}</Text>;
+            break;
+          
+          case "MOMENTUM": 
+            <Text style={{ paddingLeft: 20, paddingRight: 20, paddingTop: 20 }}>{require("./assets/06.txt")}</Text>;
+            break;
+          
+          case "IT'S GOING ROUND IN CIRCLES": 
+            <Text style={{ paddingLeft: 20, paddingRight: 20, paddingTop: 20 }}>{require("./assets/07.txt")}</Text>;
+            break;
+
+          case "ELECTROSTATIC SHUFFLE": 
+            <Text style={{ paddingLeft: 20, paddingRight: 20, paddingTop: 20 }}>{require("./assets/08.txt")}</Text>;
+            break;
+          
+          case "OHM'S LAW": 
+            <Text style={{ paddingLeft: 20, paddingRight: 20, paddingTop: 20 }}>{require("./assets/09.txt")}</Text>;
+            break;
+          
+          case "THE RIGHT HAND RULES": 
+            <Text style={{ paddingLeft: 20, paddingRight: 20, paddingTop: 20 }}>{require("./assets/10.txt")}</Text>;
+            break;
+          
+          case "WAVES": 
+            <Text style={{ paddingLeft: 20, paddingRight: 20, paddingTop: 20 }}>{require("./assets/11.txt")}</Text>;
+            break;
+          
+          case "LET THERE BE LIGHT": 
+            <Text style={{ paddingLeft: 20, paddingRight: 20, paddingTop: 20 }}>{require("./assets/12.txt")}</Text>;
+            break;
+          
+          default: <Text style={{ paddingLeft: 20, paddingRight: 20, paddingTop: 20 }}>{"No Lyrics to display."}</Text>;
+        }
       </ScrollView>
     );
   }
 };
 
-//Layouts for containers.
 const styles = StyleSheet.create({
   listButtons: {
     flex: 1,
