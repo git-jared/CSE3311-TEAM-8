@@ -32,7 +32,7 @@ Step 7: Now, in the terminal open the newly created project folder: cd ProjectNa
 
 Step 8: Now from the GitHub repository, copy the contents of App.js file into the existing App.js file in VS code.
         Create a new Header.js file in your VS code and copy the contents of Header.js from GitHub into the newly created file.
-        Lastly, download the dummy_pic.jpg, songs folder, and lyrics.json file from GitHub and upload it into the assets folder in VS code.
+        Lastly, download the dummy_pic.jpg, all the songs (Song 1 to 11, .mp3 files), and lyrics.json file from GitHub and upload it into the assets folder in VS code.
         
         Note:
         “In VS code” means the left explorer window with the list of files and folders. You could also go into the actual project through File Explorer and change the files.
