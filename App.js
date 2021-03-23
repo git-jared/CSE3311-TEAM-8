@@ -18,11 +18,16 @@ export default function App() {
   const [imagepath, setImagePath] = useState();
   const [screenNumber, setScreenNumber] = useState(1);
 
-  const [isPlaying, setisPlaying] = useState(true); 
+  const [isPlaying, setisPlaying] = useState(false); 
+  const [volume, setvolume] = useState(1.0);
+
+  const [sound, setSound] = useState();
   
   //the value of the slider should be between 0 and 1
   const [sliderValue, setSliderValue] = useState(0);
 
+
+  
   const button_Clicked = (number, screen, name, path) => {
     setScreenNumber(screen);
     if(screen == 2)
@@ -34,14 +39,116 @@ export default function App() {
   };
 
   //Prints the current state of isPlaying when it is rendered or re-rendered.
-  useEffect(() => console.log("re-render because isPlaying changed:", isPlaying), [isPlaying])
+  //useEffect(() => {console.log("re-render because isPlaying changed:", isPlaying), [isPlaying];
+//   useEffect(() => {
+//     return sound
+//     ? () => {
+//         console.log('Unloading Sound');
+//         sound.unloadAsync(); }
+//     : undefined;
+// }, [sound]);
+  
+
+//   // if(isPlaying) {
+//   //   const sound = new Audio.Sound.createAsync(require('./songs/01 The Motion Highway 9-11-10.wav'));
+//   //   sound.loadAsync();
+//   // }
+//   //this.loadAudio();
+// });
+function getSongName(){
+  var song_name = '';
+  switch(unitNumber)
+  {
+    case 1:
+      song_name = './songs/01 The Motion Highway 9-11-10.wav'; 
+      break;
+
+    
+    case 2:
+      song_name = './songs/02 FREE FALL 9-13-10.wav'; 
+      break;
+
+      
+    case 3:
+      song_name = './songs/03 Trigonometric Blues 9-13-10.wav'; 
+      break;
+
+    
+    case 4:
+      song_name = './songs/04 THE FORCE - 10-21-10.wav'; 
+      break;
+
+      
+    case 5:
+      song_name = './songs/05 ENERGY 10-15-11.wav'; 
+      break;
+
+    
+    case 6:
+      song_name = './songs/06 MOMENTUM-Momentum 12-7.wav'; 
+      break;
+
+    case 7:
+      song_name = './songs/07 CENTRALPETAL FORCE - Circles.wav'; 
+      break;
+
+    case 8:
+      song_name = './songs/08 STATIC ELECTRICITY - Electrostatic Shuffle 5-10-10.wav'; 
+      break;
+
+    case 9:
+      song_name = './songs/09 CURRENT ELECTRICITY - Ohms Law 10-10-11'; 
+      break;
+
+    case 10:
+      song_name = './songs/10 MAGNETISM-The Right Hand Rules'; 
+      break;
+
+    case 11:
+      song_name = './songs/11 WAVES & SOUND-Frequently1 4-19-10'; 
+      break;
+
+    default:
+      song_name = './songs/01 The Motion Highway 9-11-10.wav'; 
+}
+console.log(song_name);
+return song_name;
+};
+
+//called from play btn plays teh audio sound for the respective unit.
+async function playSound(){
+  console.log('Loading Sound');
+  const song = getSongName();
+  const {sound} = await Audio.Sound.createAsync(require(song));
+  setSound(sound);
+
+  await sound.playAsync();
+};
+
+function pauseSound(){
+  console.log('Stopping Sound');
+  sound.unloadAsync();
+};
+/*
+function loadAudio() {
+const playbackInstance = new Audio.Sound();
+const source = "./songs/01 The Motion Highway 9-11-10";
+await playbackInstance.loadAsync(source, status, false)
+};
+*/
 //onClick function for PAUSE btn that sets the state of isPlaying to false using hooks.
 function handlePause () {
   
   setisPlaying(false);
   
-  
+};
 
+
+//onClick function for PLAY btn that sets the state of isPlaying to true using hooks.
+function handlePlay () {
+  
+  setisPlaying(true);
+  
 };
 //Displays the front page of our app with all of the available units.
   if(screenNumber == 1){
@@ -166,12 +273,12 @@ function handlePause () {
         <View style={styles.musicControl}>
           <Button
             title="Play"
-            onPress={() => {Alert.alert('Music Not added.')}}
+            onPress={() => playSound()}
             color = "#ff4500"
           />
           <Button
             title="Pause"
-            onPress={() => handlePause()}
+            onPress={() => pauseSound()}
             color = "#ff4500"
           />
         </View>
