@@ -236,6 +236,11 @@ export default function App() {
             onPress={() => pauseSound()}
             color = "#ff4500"
           />
+          <Button
+            title="Skip"
+            onPress={() => pauseSound()}
+            color = "#ff4500"
+          />
         </View>
       </View>
     );
