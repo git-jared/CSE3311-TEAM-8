@@ -109,6 +109,49 @@ export default function App() {
     }
   };
 
+  function skipSong() {
+    console.log("song skipped")
+    console.log(unitNumber)
+    let skippedSong = unitNumber + 1
+    console.log(skippedSong)
+
+    switch (skippedSong) {
+      case 2:
+        button_Clicked(2, 2, "Unit-2", "FREE FALL", require("./assets/dummy_pic.jpg"), require('./assets/Song2.mp3'))
+        break;
+      case 3:
+        button_Clicked(3, 2, "Unit-3", "TRIGOMETRIC BLUES", require("./assets/dummy_pic.jpg"), require('./assets/Song3.mp3'))
+        break;
+      case 4:
+        button_Clicked(4, 2, "Unit-4", "THE FORCE", require("./assets/dummy_pic.jpg"), require('./assets/Song4.mp3'))
+        break;
+      case 5:
+        button_Clicked(5, 2, "Unit-5", "ENERGY IS CONSERVED", require("./assets/dummy_pic.jpg"), require('./assets/Song5.mp3'))
+        break;
+      case 6:
+        button_Clicked(6, 2, "Unit-6", "MOMENTUM", require("./assets/dummy_pic.jpg"), require('./assets/Song6.mp3'))
+        break;
+      case 7:
+        button_Clicked(7, 2, "Unit-7", "IT'S GOING ROUND IN CIRCLES", require("./assets/dummy_pic.jpg"), require('./assets/Song7.mp3'))
+        break;
+      case 8:
+        button_Clicked(8, 2, "Unit-8", "ELECTROSTATIC SHUFFLE", require("./assets/dummy_pic.jpg"), require('./assets/Song8.mp3'))
+        break;
+      case 9:
+        button_Clicked(9, 2, "Unit-9", "OHM'S LAW", require("./assets/dummy_pic.jpg"), require('./assets/Song9.mp3'))
+        break;
+      case 10:
+        button_Clicked(10, 2, "Unit-10", "THE RIGHT HAND RULES", require("./assets/dummy_pic.jpg"), require('./assets/Song10.mp3'))
+        break;
+      case 11:
+        button_Clicked(11, 2, "Unit-11", "WAVES", require("./assets/dummy_pic.jpg"), require('./assets/Song11.mp3'))
+        break;
+      default:
+        button_Clicked(1, 2, "Unit-1", "THE MOTION HIGHWAY", require("./assets/dummy_pic.jpg"), require('./assets/Song1.mp3'))
+        break;
+    }
+  }
+
   //Displays the front page of our app with all of the available units.
   if(screenNumber == 1){
     return (
@@ -238,7 +281,7 @@ export default function App() {
           />
           <Button
             title="Skip"
-            onPress={() => pauseSound()}
+            onPress={() => skipSong()}
             color = "#ff4500"
           />
         </View>
