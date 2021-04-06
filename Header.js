@@ -9,19 +9,17 @@ const Header = props => {
     );
 }
 
-//Layout for the container
 const styles = StyleSheet.create({
     header: {
         width: '100%',
         height: 90,
         paddingTop: 45,
-        backgroundColor: '#f5deb3',
         alignItems: 'center',
         justifyContent: 'center'
     },
     headerTitle: {
         color: 'black',
-        fontSize: 25,
+        fontSize: 35,
         fontWeight: 'bold'
     }
 });
