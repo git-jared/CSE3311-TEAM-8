@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, View, Text, Image, Button, ScrollView } from 'react-native';
+import { StyleSheet, TouchableOpacity, View, Text, Button, ScrollView, ImageBackground} from 'react-native';
 
 //import statement for slider
 import Slider from '@react-native-community/slider';
 import Header from './components/Header';
 import {Audio} from 'expo-av';
+import { AntDesign } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 
 const Separator=() => (<View style={styles.separator} />);
 
@@ -17,9 +19,13 @@ export default function App() {
   const [songTitle, setSongTitle] = useState();
   const [musicPath, setMusicPath] = useState();
 
+  const [playOnce, setPlayOnce] = useState(false);
+
   const [isPlaying, setisPlaying] = useState(false); 
   const [volume, setvolume] = useState(1.0);
   const [isBuffering, setisBuffering] = useState(false);
+  const [position, setPosition] = useState(0);
+  const [duration, setDuration] = useState(0);
 
   const [sound, setSound] = useState();
   
@@ -61,7 +67,11 @@ export default function App() {
         setMusicInitiated(true);
         //Load the music if "sound" is empty or unloaded
         console.log('Loading Sound');
-        const {sound} = await Audio.Sound.createAsync(musicPath);
+        const sound = new Audio.Sound();
+        await sound.loadAsync(musicPath);
+        sound.setOnPlaybackStatusUpdate(onPlaybackStatusUpdate);
+        const soundStatus = await sound.getStatusAsync();
+        setDuration(soundStatus.durationMillis);
         setSound(sound);
         console.log('Playing Music')
         await sound.playAsync();
@@ -84,6 +94,10 @@ export default function App() {
     }
   };
 
+  const onPlaybackStatusUpdate = status => {
+    setPosition(status.positionMillis);
+  }
+
   //Pauses current loaded song on Pause btn click.
   async function pauseSound(){
     if(isPlaying == true && musicInitiated == false)
@@ -92,6 +106,20 @@ export default function App() {
       console.log('Pausing Music');
       sound.pauseAsync();
       setisPlaying(false);
+      setMusicInitiated(false);
+    }
+  };
+
+  function handlePlayPause() {
+    if(musicInitiated == false)
+    {
+      setMusicInitiated(true);
+      if(isPlaying == false){
+        playSound();
+      }
+      else{
+        pauseSound();
+      }
       setMusicInitiated(false);
     }
   };
@@ -106,158 +134,246 @@ export default function App() {
       setisPlaying(false);
       setisBuffering(false);
       setMusicInitiated(false);
+      setPlayOnce(false);
     }
   };
+
+
+  function skipBack() {
+    if(isBuffering == true) {
+      stopSound();
+    }
+    let newSong = unitNumber - 1
+
+    switch (newSong) {
+      case 1:
+        button_Clicked(1, 2, "Unit-1", "THE MOTION HIGHWAY", require("./assets/Motion_Highway.jpg"), require('./assets/Song1.mp3'))
+        break;
+      case 2:
+        button_Clicked(2, 2, "Unit-2", "FREE FALL", require("./assets/Free_Fall.jpg"), require('./assets/Song2.mp3'))
+        break;
+      case 3:
+        button_Clicked(3, 2, "Unit-3", "TRIGOMETRIC BLUES", require("./assets/Trig_Blues.jpg"), require('./assets/Song3.mp3'))
+        break;
+      case 4:
+        button_Clicked(4, 2, "Unit-4", "THE FORCE", require("./assets/The_Force.jpg"), require('./assets/Song4.mp3'))
+        break;
+      case 5:
+        button_Clicked(5, 2, "Unit-5", "ENERGY IS CONSERVED", require("./assets/Energy_Conserved.jpg"), require('./assets/Song5.mp3'))
+        break;
+      case 6:
+        button_Clicked(6, 2, "Unit-6", "MOMENTUM", require("./assets/Momentum.jpg"), require('./assets/Song6.mp3'))
+        break;
+      case 7:
+        button_Clicked(7, 2, "Unit-7", "IT'S GOING ROUND IN CIRCLES", require("./assets/Circles.jpg"), require('./assets/Song7.mp3'))
+        break;
+      case 8:
+        button_Clicked(8, 2, "Unit-8", "ELECTROSTATIC SHUFFLE", require("./assets/Electrostatic_Shuffle.jpg"), require('./assets/Song8.mp3'))
+        break;
+      case 9:
+        button_Clicked(9, 2, "Unit-9", "OHM'S LAW", require("./assets/Ohms_Law.jpg"), require('./assets/Song9.mp3'))
+        break;
+      case 10:
+        button_Clicked(10, 2, "Unit-10", "THE RIGHT HAND RULES", require("./assets/Right_Hand_Rule.jpg"), require('./assets/Song10.mp3'))
+        break;
+      default:
+        button_Clicked(11, 2, "Unit-11", "WAVES", require("./assets/Waves.jpg"), require('./assets/Song11.mp3'))
+        break;
+    }
+  }
+
+  
+  function skipForward() {
+    if(isBuffering == true) {
+      stopSound();
+    }
+    let skippedSong = unitNumber + 1
+
+    switch (skippedSong) {
+      case 2:
+        button_Clicked(2, 2, "Unit-2", "FREE FALL", require("./assets/Free_Fall.jpg"), require('./assets/Song2.mp3'))
+        break;
+      case 3:
+        button_Clicked(3, 2, "Unit-3", "TRIGOMETRIC BLUES", require("./assets/Trig_Blues.jpg"), require('./assets/Song3.mp3'))
+        break;
+      case 4:
+        button_Clicked(4, 2, "Unit-4", "THE FORCE", require("./assets/The_Force.jpg"), require('./assets/Song4.mp3'))
+        break;
+      case 5:
+        button_Clicked(5, 2, "Unit-5", "ENERGY IS CONSERVED", require("./assets/Energy_Conserved.jpg"), require('./assets/Song5.mp3'))
+        break;
+      case 6:
+        button_Clicked(6, 2, "Unit-6", "MOMENTUM", require("./assets/Momentum.jpg"), require('./assets/Song6.mp3'))
+        break;
+      case 7:
+        button_Clicked(7, 2, "Unit-7", "IT'S GOING ROUND IN CIRCLES", require("./assets/Circles.jpg"), require('./assets/Song7.mp3'))
+        break;
+      case 8:
+        button_Clicked(8, 2, "Unit-8", "ELECTROSTATIC SHUFFLE", require("./assets/Electrostatic_Shuffle.jpg"), require('./assets/Song8.mp3'))
+        break;
+      case 9:
+        button_Clicked(9, 2, "Unit-9", "OHM'S LAW", require("./assets/Ohms_Law.jpg"), require('./assets/Song9.mp3'))
+        break;
+      case 10:
+        button_Clicked(10, 2, "Unit-10", "THE RIGHT HAND RULES", require("./assets/Right_Hand_Rule.jpg"), require('./assets/Song10.mp3'))
+        break;
+      case 11:
+        button_Clicked(11, 2, "Unit-11", "WAVES", require("./assets/Waves.jpg"), require('./assets/Song11.mp3'))
+        break;
+      default:
+        button_Clicked(1, 2, "Unit-1", "THE MOTION HIGHWAY", require("./assets/Motion_Highway.jpg"), require('./assets/Song1.mp3'))
+        break;
+    }
+  }
+
+  function timeConversion(millis) {
+    var minutes = Math.floor(millis / 60000);
+    var seconds = ((millis % 60000) / 1000).toFixed(0);
+    return (minutes < 10 ? '0' : '') + minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+  }
 
   //Displays the front page of our app with all of the available units.
   if(screenNumber == 1){
     return (
-      <ScrollView style={{backgroundColor: '#7CA1B4'}}>
+      <ImageBackground source={require("./assets/dummy_pic.jpg")} style={{width: '100%', height: '100%'}} imageStyle={{opacity: 0.4}}>
+      <ScrollView>
         <Header title="PHYSICS ROCKS"/>
         <View style={styles.listButtons}>
           <Separator />
           <Button 
               title="THE MOTION HIGHWAY"
-              onPress={() => button_Clicked(1, 2, "Unit-1", "THE MOTION HIGHWAY", require("./assets/dummy_pic.jpg"), require('./assets/Song1.mp3'))}   
-              color = "#ff4500"
+              onPress={() => button_Clicked(1, 2, "Unit-1", "THE MOTION HIGHWAY", require("./assets/Motion_Highway.jpg"), require('./assets/Song1.mp3'))}   
+              color = "purple"
           />
           <Separator />
           <Button 
               title="FREE FALL"
-              onPress={() => button_Clicked(2, 2, "Unit-2", "FREE FALL", require("./assets/dummy_pic.jpg"), require('./assets/Song2.mp3'))}
-              color = "#ff4500"
+              onPress={() => button_Clicked(2, 2, "Unit-2", "FREE FALL", require("./assets/Free_Fall.jpg"), require('./assets/Song2.mp3'))}
+              color = "purple"
           />
           <Separator />
           <Button 
               title="TRIGOMETRIC BLUES"
-              onPress={() => button_Clicked(3, 2, "Unit-3", "TRIGOMETRIC BLUES", require("./assets/dummy_pic.jpg"), require('./assets/Song3.mp3'))}
-              color = "#ff4500"
+              onPress={() => button_Clicked(3, 2, "Unit-3", "TRIGOMETRIC BLUES", require("./assets/Trig_Blues.jpg"), require('./assets/Song3.mp3'))}
+              color = "purple"
           />
           <Separator />
           <Button 
               title="THE FORCE"
-              onPress={() => button_Clicked(4, 2, "Unit-4", "THE FORCE", require("./assets/dummy_pic.jpg"), require('./assets/Song4.mp3'))}
-              color = "#ff4500"
+              onPress={() => button_Clicked(4, 2, "Unit-4", "THE FORCE", require("./assets/The_Force.jpg"), require('./assets/Song4.mp3'))}
+              color = "purple"
           />
           <Separator />
           <Button 
               title="ENERGY IS CONSERVED"
-              onPress={() => button_Clicked(5, 2, "Unit-5", "ENERGY IS CONSERVED", require("./assets/dummy_pic.jpg"), require('./assets/Song5.mp3'))}
-              color = "#ff4500"
+              onPress={() => button_Clicked(5, 2, "Unit-5", "ENERGY IS CONSERVED", require("./assets/Energy_Conserved.jpg"), require('./assets/Song5.mp3'))}
+              color = "purple"
           />
           <Separator />
           <Button 
               title="MOMENTUM"
-              onPress={() => button_Clicked(6, 2, "Unit-6", "MOMENTUM", require("./assets/dummy_pic.jpg"), require('./assets/Song6.mp3'))}
-              color = "#ff4500"
+              onPress={() => button_Clicked(6, 2, "Unit-6", "MOMENTUM", require("./assets/Momentum.jpg"), require('./assets/Song6.mp3'))}
+              color = "purple"
           />
           <Separator />
           <Button 
               title="IT'S GOING ROUND IN CIRCLES"
-              onPress={() => button_Clicked(7, 2, "Unit-7", "IT'S GOING ROUND IN CIRCLES", require("./assets/dummy_pic.jpg"), require('./assets/Song7.mp3'))}
-              color = "#ff4500"
+              onPress={() => button_Clicked(7, 2, "Unit-7", "IT'S GOING ROUND IN CIRCLES", require("./assets/Circles.jpg"), require('./assets/Song7.mp3'))}
+              color = "purple"
           />
           <Separator />
           <Button 
               title="ELECTROSTATIC SHUFFLE"
-              onPress={() => button_Clicked(8, 2, "Unit-8", "ELECTROSTATIC SHUFFLE", require("./assets/dummy_pic.jpg"), require('./assets/Song8.mp3'))}
-              color = "#ff4500"
+              onPress={() => button_Clicked(8, 2, "Unit-8", "ELECTROSTATIC SHUFFLE", require("./assets/Electrostatic_Shuffle.jpg"), require('./assets/Song8.mp3'))}
+              color = "purple"
           />
           <Separator />
           <Button 
               title="OHM'S LAW"
-              onPress={() => button_Clicked(9, 2, "Unit-9", "OHM'S LAW", require("./assets/dummy_pic.jpg"), require('./assets/Song9.mp3'))}
-              color = "#ff4500"
+              onPress={() => button_Clicked(9, 2, "Unit-9", "OHM'S LAW", require("./assets/Ohms_Law.jpg"), require('./assets/Song9.mp3'))}
+              color = "purple"
           />
           <Separator />
           <Button 
               title="THE RIGHT HAND RULES"
-              onPress={() => button_Clicked(10, 2, "Unit-10", "THE RIGHT HAND RULES", require("./assets/dummy_pic.jpg"), require('./assets/Song10.mp3'))}
-              color = "#ff4500"
+              onPress={() => button_Clicked(10, 2, "Unit-10", "THE RIGHT HAND RULES", require("./assets/Right_Hand_Rule.jpg"), require('./assets/Song10.mp3'))}
+              color = "purple"
           />
           <Separator />
           <Button 
               title="WAVES"
-              onPress={() => button_Clicked(11, 2, "Unit-11", "WAVES", require("./assets/dummy_pic.jpg"), require('./assets/Song11.mp3'))}
-              color = "#ff4500"
+              onPress={() => button_Clicked(11, 2, "Unit-11", "WAVES", require("./assets/Waves.jpg"), require('./assets/Song11.mp3'))}
+              color = "purple"
           />
           <Separator />
         </View>
       </ScrollView>
+      </ImageBackground>
     );
   }
 
   //Displays the playmusic window with buttons "Play", "Back" and "Lyrics", and seek slider.
-  else if(screenNumber == 2 || screenNumber == 23)
+  else if(screenNumber == 2)
   {
+    if(playOnce == false){
+      setPlayOnce(true);
+      playSound();
+    }
     return (
-      <View style={styles.topadjust}>
-        <View style={styles.backButton}>
-          <Button 
-              title="< Back"
-              onPress={() => button_Clicked(0, 1, "Unit 0", require("./assets/dummy_pic.jpg"))}
-              color = "#ff4500"
+      <ImageBackground source={imagepath} style={{width: '100%', height: '100%'}} imageStyle={{opacity: 0.4}}>
+
+          <View style={styles.backButton}>
+            <Button 
+                title="< Back"
+                onPress={() => button_Clicked(0, 1, "Unit 0", require("./assets/dummy_pic.jpg"))}
+                color = "purple"
+            />
+          </View>
+
+          <Text style={styles.textTitle}>{songTitle}</Text>
+
+          <Separator/>
+
+          <View style={{justifyContent: 'center', alignItems:'center', paddingTop: 20}}>
+            <ScrollView style={{ width: 400, height: 400}}>
+            <Text style={{ paddingLeft: 20, paddingRight: 20, paddingTop: 20, paddingBottom: 50, textAlign: 'center', fontSize : 15, fontWeight: 'bold' }}>{lyricsData[unitName]}</Text>
+            </ScrollView>
+          </View>
+
+          <Separator/>
+
+          <Slider
+            style={{marginLeft: 10, marginRight:10, width: '95%', height: 40}}
+            minimumValue={0}
+            maximumValue={duration}
+            value= {position}
+            minimumTrackTintColor="#FFFFFF"
+            maximumTrackTintColor="#000000"
           />
-        </View>
-        <Text style={styles.textTitle}>{songTitle}</Text>
-        <View style={{justifyContent: 'center', alignItems:'center', paddingTop: 20}}>
-          <Image
-            style={{ width: 300, height: 300}}
-            source={imagepath}
-            resizeMode="contain"
-          />
-        </View>
-        <View style={{justifyContent: 'center', marginVertical: 50, marginHorizontal: 50}}>
-          <Button
-              title="Lyrics"
-              onPress={() => button_Clicked(0, 3, 'Unit 0', require("./assets/dummy_pic.jpg"))}
-              color = "#ff4500"
-          />
-        </View>
-        <Slider
-          style={{marginLeft: 10, marginRight:10, width: '95%', height: 40}}
-          minimumValue={0}
-          maximumValue={1}
-          minimumTrackTintColor="#FFFFFF"
-          maximumTrackTintColor="#000000"
-        />
-        <View style={{flexDirection: 'row'}}>
-          <Text style={{paddingLeft: 10}}>00:00</Text>
-          <Text style={{marginLeft: 'auto', paddingRight: 10}}>00:00</Text>
-        </View>
-        <View style={styles.musicControl}>
-          <Button
-            title="Play"
-            onPress={() => playSound()}
-            color = "#ff4500"
-          />
-          <Button
-            title="Pause"
-            onPress={() => pauseSound()}
-            color = "#ff4500"
-          />
-        </View>
-      </View>
-    );
-  }
-  //Displys our dummy lyrics and includes button "Back" which redirects to the previous window.
-  else
-  {
-    return(
-      <View style={styles.topadjust}>
-        <View style={styles.backButton}>
-          <Button 
-              title="< Back"
-              onPress={() => button_Clicked(0, 23, 'Unit 0', require("./assets/dummy_pic.jpg"))}
-              color = "#ff4500"
-          />
-        </View>
-        <Text style={styles.textTitle}>{songTitle}</Text>
-          <Separator />
-        <ScrollView>
-          <Text style={{ paddingLeft: 20, paddingRight: 20, paddingTop: 20, paddingBottom: 200, textAlign: 'center', fontSize : 15 }}>{lyricsData[unitName]}</Text>
-        </ScrollView>
-      </View>
+          <View style={{flexDirection: 'row'}}>
+            <Text style={{paddingLeft: 10, fontWeight: 'bold' }}>{timeConversion(position)}</Text>
+            <Text style={{marginLeft: 'auto', paddingRight: 10, fontWeight: 'bold' }}>{timeConversion(duration)}</Text>
+          </View>
+          <View style={styles.musicControl}>
+
+            <TouchableOpacity onPress={() => skipBack()}>
+              <Ionicons name="md-play-skip-back-sharp" size={34} color="black"  backgroundColor="#7CA1B4"/>
+            </TouchableOpacity>
+            
+            <TouchableOpacity onPress={() => handlePlayPause()}>
+              {isPlaying ?
+                (<AntDesign name="pausecircleo" size={70} color="black" backgroundColor="#7CA1B4"/>) :
+                (<AntDesign name="playcircleo" size={70} color="black" backgroundColor="#7CA1B4"/>)
+              }
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={() => skipForward()}>
+              <Ionicons name="ios-play-skip-forward-sharp" size={34} color="black"  backgroundColor="#7CA1B4"/>
+            </TouchableOpacity>
+          
+          </View>
+
+      </ImageBackground>
     );
   }
 };
@@ -272,7 +388,7 @@ const styles = StyleSheet.create({
   musicControl: {
     flex: 1,
     paddingVertical: 25,
-    paddingHorizontal: 80,
+    paddingHorizontal: 50,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center'
@@ -292,11 +408,10 @@ const styles = StyleSheet.create({
   },
   backButton: {
     paddingHorizontal: 45,
+    paddingTop: 50,
     flexDirection: 'row'
   },
   separator: {
-    marginVertical: 10,
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: '#737373'
+    marginVertical: 10
   }
 });
