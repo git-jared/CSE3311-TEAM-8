@@ -3,7 +3,7 @@ import { StyleSheet, TouchableOpacity, Image, View, Text, Button, ScrollView, Im
 
 //import statement for slider
 import Slider from '@react-native-community/slider';
-import Header from './components/Header';
+import Header from './Header';
 import {Audio} from 'expo-av';
 import { AntDesign } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
