@@ -239,139 +239,141 @@ export default function App() {
   //Displays the front page of our app with all of the available units.
   if(screenNumber == 1){
     return (
-    <ScrollView>
+    <ScrollView style = {{backgroundColor: 'dimgrey'}}>
         <Header title="PHYSICS ROCKS"/>
         <View>
+
           <Separator />
-          <View style={{paddingHorizontal: '12%',flexDirection: 'row', justifyContent: 'space-between'}}>
+
+          <View style={styles.homeRow}>
 
             <TouchableOpacity onPress={() => button_Clicked(1, 2, "Unit-1", "THE MOTION HIGHWAY", require("./assets/Motion_Highway.jpg"), require('./assets/Song1.mp3'))}
               style={{alignItems:'center'}}>
                 <Image 
-                style ={{width: 126, height: 156, borderRadius: 50}}
+                style ={styles.imageStyle}
                   source = {require("./assets/Motion_Highway.jpg")}  
                 />
-                <Text style={{paddingTop: 5, fontSize: 15, fontWeight: 'bold'}}>Motion</Text>
+                <Text style={styles.buttonName}>Motion</Text>
             </TouchableOpacity>
 
             <TouchableOpacity onPress={() => button_Clicked(2, 2, "Unit-2", "FREE FALL", require("./assets/Free_Fall.jpg"), require('./assets/Song2.mp3'))}
               style={{alignItems:'center'}}>
                 <Image 
-                style ={{width: 126, height: 156, borderRadius: 50}}
+                style ={styles.imageStyle}
                   source = {require("./assets/Free_Fall.jpg")}  
                 />
-                <Text style={{paddingTop: 5, fontSize: 15, fontWeight: 'bold'}}>Free Fall</Text>
+                <Text style={styles.buttonName}>Free Fall</Text>
             </TouchableOpacity>
 
           </View>
           
           <Separator />
 
-          <View style={{paddingHorizontal: '12%',flexDirection: 'row', justifyContent: 'space-between'}}>
+          <View style={styles.homeRow}>
 
             <TouchableOpacity onPress={() => button_Clicked(3, 2, "Unit-3", "TRIGOMETRIC BLUES", require("./assets/Trig_Blues.jpg"), require('./assets/Song3.mp3'))}
               style={{alignItems:'center'}}>
                 <Image 
-                style ={{width: 126, height: 156, borderRadius: 50}}
+                style ={styles.imageStyle}
                   source = {require("./assets/Trig_Blues.jpg")}  
                 />
-                <Text style={{paddingTop: 5, fontSize: 15, fontWeight: 'bold'}}>Trigonometry</Text>
+                <Text style={styles.buttonName}>Trigonometry</Text>
             </TouchableOpacity>
 
             <TouchableOpacity onPress={() => button_Clicked(4, 2, "Unit-4", "THE FORCE", require("./assets/The_Force.jpg"), require('./assets/Song4.mp3'))}
               style={{alignItems:'center'}}>
                 <Image 
-                style ={{width: 126, height: 156, borderRadius: 50}}
+                style ={styles.imageStyle}
                   source = {require("./assets/The_Force.jpg")}  
                 />
-                <Text style={{paddingTop: 5, fontSize: 15, fontWeight: 'bold'}}>Force</Text>
+                <Text style={styles.buttonName}>Force</Text>
             </TouchableOpacity>
 
           </View>
           
           <Separator />
 
-          <View style={{paddingHorizontal: '12%',flexDirection: 'row', justifyContent: 'space-between'}}>
+          <View style={styles.homeRow}>
 
             <TouchableOpacity onPress={() => button_Clicked(5, 2, "Unit-5", "ENERGY IS CONSERVED", require("./assets/Energy_Conserved.jpg"), require('./assets/Song5.mp3'))}
               style={{alignItems:'center'}}>
                 <Image 
-                style ={{width: 126, height: 156, borderRadius: 50}}
+                style ={styles.imageStyle}
                   source = {require("./assets/Energy_Conserved.jpg")}  
                 />
-                <Text style={{paddingTop: 5, fontSize: 15, fontWeight: 'bold'}}>Energy</Text>
+                <Text style={styles.buttonName}>Energy</Text>
             </TouchableOpacity>
 
             <TouchableOpacity onPress={() => button_Clicked(6, 2, "Unit-6", "MOMENTUM", require("./assets/Momentum.jpg"), require('./assets/Song6.mp3'))}
               style={{alignItems:'center'}}>
                 <Image 
-                style ={{width: 126, height: 156, borderRadius: 50}}
+                style ={styles.imageStyle}
                   source = {require("./assets/Momentum.jpg")}  
                 />
-                <Text style={{paddingTop: 5, fontSize: 15, fontWeight: 'bold'}}>Momentum</Text>
+                <Text style={styles.buttonName}>Momentum</Text>
             </TouchableOpacity>
 
           </View>
           
           <Separator />
 
-          <View style={{paddingHorizontal: '12%',flexDirection: 'row', justifyContent: 'space-between'}}>
+          <View style={styles.homeRow}>
 
             <TouchableOpacity onPress={() => button_Clicked(7, 2, "Unit-7", "IT'S GOING ROUND IN CIRCLES", require("./assets/Circles.jpg"), require('./assets/Song7.mp3'))}
               style={{alignItems:'center'}}>
                 <Image 
-                style ={{width: 126, height: 156, borderRadius: 50}}
+                style ={styles.imageStyle}
                   source = {require("./assets/Circles.jpg")}  
                 />
-                <Text style={{paddingTop: 5, fontSize: 15, fontWeight: 'bold'}}>Circles</Text>
+                <Text style={styles.buttonName}>Circles</Text>
             </TouchableOpacity>
 
             <TouchableOpacity onPress={() => button_Clicked(8, 2, "Unit-8", "ELECTROSTATIC SHUFFLE", require("./assets/Electrostatic_Shuffle.jpg"), require('./assets/Song8.mp3'))}
               style={{alignItems:'center'}}>
                 <Image 
-                style ={{width: 126, height: 156, borderRadius: 50}}
+                style ={styles.imageStyle}
                   source = {require("./assets/Electrostatic_Shuffle.jpg")}  
                 />
-                <Text style={{paddingTop: 5, fontSize: 15, fontWeight: 'bold'}}>Electricity</Text>
+                <Text style={styles.buttonName}>Electricity</Text>
             </TouchableOpacity>
 
           </View>
           
           <Separator />
 
-          <View style={{paddingHorizontal: '12%',flexDirection: 'row', justifyContent: 'space-between'}}>
+          <View style={styles.homeRow}>
 
             <TouchableOpacity onPress={() => button_Clicked(9, 2, "Unit-9", "OHM'S LAW", require("./assets/Ohms_Law.jpg"), require('./assets/Song9.mp3'))}
               style={{alignItems:'center'}}>
                 <Image 
-                style ={{width: 126, height: 156, borderRadius: 50}}
+                style ={styles.imageStyle}
                   source = {require("./assets/Ohms_Law.jpg")}  
                 />
-                <Text style={{paddingTop: 5, fontSize: 15, fontWeight: 'bold'}}>Ohms Law</Text>
+                <Text style={styles.buttonName}>Ohms Law</Text>
             </TouchableOpacity>
 
             <TouchableOpacity onPress={() => button_Clicked(10, 2, "Unit-10", "THE RIGHT HAND RULES", require("./assets/Right_Hand_Rule.jpg"), require('./assets/Song10.mp3'))}
               style={{alignItems:'center'}}>
                 <Image 
-                style ={{width: 126, height: 156, borderRadius: 50}}
+                style ={styles.imageStyle}
                   source = {require("./assets/Right_Hand_Rule.jpg")}  
                 />
-                <Text style={{paddingTop: 5, fontSize: 15, fontWeight: 'bold'}}>Right Hand Rule</Text>
+                <Text style={styles.buttonName}>Right Hand Rule</Text>
             </TouchableOpacity>
 
           </View>
           
           <Separator />
 
-          <View style={{paddingHorizontal: '12%', justifyContent: 'space-between'}}>
+          <View style={styles.homeRow}>
 
             <TouchableOpacity onPress={() => button_Clicked(11, 2, "Unit-11", "WAVES", require("./assets/Waves.jpg"), require('./assets/Song11.mp3'))}
               style={{alignItems:'center'}}>
                 <Image 
-                style ={{width: 126, height: 156, borderRadius: 50}}
+                style ={styles.imageStyle}
                   source = {require("./assets/Waves.jpg")}  
                 />
-                <Text style={{paddingTop: 5, fontSize: 15, fontWeight: 'bold'}}>Waves</Text>
+                <Text style={styles.buttonName}>Waves</Text>
             </TouchableOpacity>
 
           </View>
@@ -450,11 +452,6 @@ export default function App() {
 
 //Layouts for containers.
 const styles = StyleSheet.create({
-  listButtons: {
-    flex: 1,
-    justifyContent: 'center',
-    marginHorizontal: 50
-  },
   musicControl: {
     flex: 1,
     marginVertical: '10%',
@@ -470,11 +467,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     paddingTop: '5%'
   },
-  topadjust: {
-    flex: 1,
-    paddingVertical: 45,
-    backgroundColor: '#7CA1B4'
-  },
   backButton: {
     paddingLeft: '10%',
     paddingTop: '12%',
@@ -483,19 +475,23 @@ const styles = StyleSheet.create({
   separator: {
     marginVertical: 14
   },
-  roundButton1: {
-    width: '70%',
-    height: 80,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 10,
-    borderRadius: 100,
-    backgroundColor: 'purple',
+  imageStyle: {
+    width: 126, 
+    height: 156, 
+    borderRadius: 50,
+    overflow: 'hidden',
+    borderWidth: 2,
+    borderColor: 'white'
   },
-  button_text: {
-    color: 'white',
-    fontSize: 15,
-    fontWeight: 'bold',
-    textAlign: 'center'
+  homeRow: {
+    paddingHorizontal: '12%',
+    flexDirection: 'row', 
+    justifyContent: 'space-between'
+  },
+  buttonName: {
+    color: 'white', 
+    paddingTop: 5, 
+    fontSize: 15, 
+    fontWeight: 'bold'
   }
 });
