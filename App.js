@@ -407,7 +407,7 @@ export default function App() {
 
           <View style={{justifyContent: 'center', alignItems:'center', paddingTop: 20}}>
             <ScrollView style={{ width: 400, height: 400}}>
-            <Text style={{ paddingLeft: 20, paddingRight: 20, paddingTop: 20, paddingBottom: 50, textAlign: 'center', fontSize : 15, fontWeight: 'bold' }}>{lyricsData[unitName]}</Text>
+            <Text style={{ paddingLeft: 20, paddingRight: 20, paddingTop: 20, paddingBottom: 50, textAlign: 'center', fontSize : 18, fontWeight: 'bold' }}>{lyricsData[unitName]}</Text>
             </ScrollView>
           </View>
 
@@ -467,7 +467,7 @@ const styles = StyleSheet.create({
   },
   textTitle: {
     color: 'black',
-    fontSize: 25,
+    fontSize: 30,
     fontWeight: 'bold',
     textAlign: 'center',
     paddingTop: 20
