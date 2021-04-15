@@ -403,18 +403,16 @@ export default function App() {
 
           <Text style={styles.textTitle}>{songTitle}</Text>
 
-          <Separator/>
-
-          <View style={{justifyContent: 'center', alignItems:'center', paddingTop: 20}}>
-            <ScrollView style={{ width: 400, height: 400}}>
-            <Text style={{ paddingLeft: 20, paddingRight: 20, paddingTop: 20, paddingBottom: 50, textAlign: 'center', fontSize : 18, fontWeight: 'bold' }}>{lyricsData[unitName]}</Text>
+          <View style={{justifyContent: 'center', alignItems:'center', paddingTop: '5%'}}>
+            <ScrollView style={{ width: '100%', height: '50%'}}>
+            <Text style={{ marginHorizontal: '20%', marginVertical : '7%', textAlign: 'center', fontSize : 18, fontWeight: 'bold' }}>{lyricsData[unitName]}</Text>
             </ScrollView>
           </View>
 
           <Separator/>
 
           <Slider
-            style={{marginLeft: 10, marginRight:10, width: '95%', height: 40}}
+            style={{marginLeft: 10, marginRight:10, width: '95%', height: '5%'}}
             minimumValue={0}
             maximumValue={duration}
             value={position}
@@ -423,8 +421,8 @@ export default function App() {
             onSlidingComplete={(position)=>handleSeek(position)}
           />
           <View style={{flexDirection: 'row'}}>
-            <Text style={{paddingLeft: 10, fontWeight: 'bold' }}>{timeConversion(position)}</Text>
-            <Text style={{marginLeft: 'auto', paddingRight: 10, fontWeight: 'bold' }}>{timeConversion(duration)}</Text>
+            <Text style={{paddingLeft: 15, fontWeight: 'bold' }}>{timeConversion(position)}</Text>
+            <Text style={{marginLeft: 'auto', paddingRight: 15, fontWeight: 'bold' }}>{timeConversion(duration)}</Text>
           </View>
           <View style={styles.musicControl}>
 
@@ -459,8 +457,8 @@ const styles = StyleSheet.create({
   },
   musicControl: {
     flex: 1,
-    paddingVertical: 25,
-    paddingHorizontal: 50,
+    marginVertical: '10%',
+    marginHorizontal: '10%',
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center'
@@ -470,7 +468,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: 'bold',
     textAlign: 'center',
-    paddingTop: 20
+    paddingTop: '5%'
   },
   topadjust: {
     flex: 1,
@@ -478,8 +476,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#7CA1B4'
   },
   backButton: {
-    paddingHorizontal: 45,
-    paddingTop: 50,
+    paddingLeft: '10%',
+    paddingTop: '12%',
     flexDirection: 'row'
   },
   separator: {
