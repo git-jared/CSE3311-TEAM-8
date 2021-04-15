@@ -379,7 +379,7 @@ export default function App() {
           
           <Separator />
 
-          <View style={styles.homeRow}>
+          <View style={{paddingHorizontal: '12%', justifyContent: 'space-between'}}>
 
             <TouchableOpacity onPress={() => button_Clicked(11, 2, "Unit-11", "WAVES", require("./assets/Waves.jpg"), require('./assets/Song11.mp3'))}
               style={{alignItems:'center'}}>
