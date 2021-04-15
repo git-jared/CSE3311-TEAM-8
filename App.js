@@ -26,6 +26,7 @@ export default function App() {
   const [isBuffering, setisBuffering] = useState(false);
   const [position, setPosition] = useState(0);
   const [duration, setDuration] = useState(0);
+  const [musicComplete, setMusicComplete] = useState(false);
 
   const [sound, setSound] = useState();
   
@@ -96,11 +97,24 @@ export default function App() {
 
   const onPlaybackStatusUpdate = status => {
     setPosition(status.positionMillis);
+    if(status.didJustFinish){
+      console.log("songFinish");
+      handleComplete();
+    }
   }
+
+  async function handleComplete() {
+    skipForward();
+    setMusicInitiated(false);
+    setPlayOnce(false);
+    setisBuffering(false);
+    setisPlaying(false);
+    setMusicComplete(true);
+  };
 
   //Pauses current loaded song on Pause btn click.
   function pauseSound(){
-    if(isPlaying == true && musicInitiated == false)
+    if(musicInitiated == false)
     {
       setMusicInitiated(true);
       console.log('Pausing Music');
@@ -388,8 +402,9 @@ export default function App() {
   //Displays the playmusic window with buttons "Play", "Back" and "Lyrics", and seek slider.
   else if(screenNumber == 2)
   {
-    if(playOnce == false){
+    if(playOnce == false || musicComplete == true){
       setPlayOnce(true);
+      setMusicComplete(false);
       playSound();
     }
     return (
