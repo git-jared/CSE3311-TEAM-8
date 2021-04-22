@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, TouchableOpacity, Image, View, Text, Button, ScrollView, ImageBackground} from 'react-native';
+import { StyleSheet, TouchableOpacity, Image, View, Text, Button, ScrollView, ImageBackground, PixelRatio} from 'react-native';
 
 //import statement for slider
 import Slider from '@react-native-community/slider';
@@ -291,7 +291,7 @@ export default function App() {
                 style ={styles.imageStyle}
                   source = {require("./assets/Trig_Blues.jpg")}  
                 />
-                <Text style={styles.buttonName}>Trigonometry</Text>
+                <Text style={styles.buttonName}>Trig Functions</Text>
             </TouchableOpacity>
 
             <TouchableOpacity onPress={() => button_Clicked(4, 2, "Unit-4", "THE FORCE", require("./assets/The_Force.jpg"), require('./assets/Song4.mp3'))}
@@ -300,7 +300,7 @@ export default function App() {
                 style ={styles.imageStyle}
                   source = {require("./assets/The_Force.jpg")}  
                 />
-                <Text style={styles.buttonName}>Force</Text>
+                <Text style={styles.buttonName}>Forces</Text>
             </TouchableOpacity>
 
           </View>
@@ -315,7 +315,7 @@ export default function App() {
                 style ={styles.imageStyle}
                   source = {require("./assets/Energy_Conserved.jpg")}  
                 />
-                <Text style={styles.buttonName}>Energy</Text>
+                <Text style={styles.buttonName}>Work & Energy</Text>
             </TouchableOpacity>
 
             <TouchableOpacity onPress={() => button_Clicked(6, 2, "Unit-6", "MOMENTUM", require("./assets/Momentum.jpg"), require('./assets/Song6.mp3'))}
@@ -339,7 +339,7 @@ export default function App() {
                 style ={styles.imageStyle}
                   source = {require("./assets/Circles.jpg")}  
                 />
-                <Text style={styles.buttonName}>Circles</Text>
+                <Text style={styles.buttonName}>Circular Motion</Text>
             </TouchableOpacity>
 
             <TouchableOpacity onPress={() => button_Clicked(8, 2, "Unit-8", "ELECTROSTATIC SHUFFLE", require("./assets/Electrostatic_Shuffle.jpg"), require('./assets/Song8.mp3'))}
@@ -348,7 +348,7 @@ export default function App() {
                 style ={styles.imageStyle}
                   source = {require("./assets/Electrostatic_Shuffle.jpg")}  
                 />
-                <Text style={styles.buttonName}>Electricity</Text>
+                <Text style={styles.buttonName}>Static Electricity</Text>
             </TouchableOpacity>
 
           </View>
@@ -363,7 +363,7 @@ export default function App() {
                 style ={styles.imageStyle}
                   source = {require("./assets/Ohms_Law.jpg")}  
                 />
-                <Text style={styles.buttonName}>Ohms Law</Text>
+                <Text style={styles.buttonName}>Ohm's Law</Text>
             </TouchableOpacity>
 
             <TouchableOpacity onPress={() => button_Clicked(10, 2, "Unit-10", "THE RIGHT HAND RULES", require("./assets/Right_Hand_Rule.jpg"), require('./assets/Song10.mp3'))}
@@ -372,14 +372,14 @@ export default function App() {
                 style ={styles.imageStyle}
                   source = {require("./assets/Right_Hand_Rule.jpg")}  
                 />
-                <Text style={styles.buttonName}>Right Hand Rule</Text>
+                <Text style={styles.buttonName}>Electromagnetism</Text>
             </TouchableOpacity>
 
           </View>
           
           <Separator />
 
-          <View style={{paddingHorizontal: '12%', justifyContent: 'space-between'}}>
+          <View style={{paddingHorizontal: 12*PixelRatio.get(), justifyContent: 'space-between'}}>
 
             <TouchableOpacity onPress={() => button_Clicked(11, 2, "Unit-11", "WAVES", require("./assets/Waves.jpg"), require('./assets/Song11.mp3'))}
               style={{alignItems:'center'}}>
@@ -420,16 +420,16 @@ export default function App() {
 
           <Text style={styles.textTitle}>{songTitle}</Text>
 
-          <View style={{justifyContent: 'center', alignItems:'center', paddingTop: '5%'}}>
-            <ScrollView style={{ width: '100%', height: '50%'}}>
-            <Text style={{ marginHorizontal: '20%', marginVertical : '7%', textAlign: 'center', fontSize : 18, fontWeight: 'bold' }}>{lyricsData[unitName]}</Text>
+          <View style={{justifyContent: 'center', alignItems:'center', paddingTop: 5*PixelRatio.get()}}>
+            <ScrollView style={{ width: 135*PixelRatio.get(), height: '45%'}}>
+            <Text style={{ marginHorizontal: 20*PixelRatio.get(), marginVertical : 7*PixelRatio.get(), textAlign: 'center', fontSize : 6*PixelRatio.get(), fontWeight: 'bold' }}>{lyricsData[unitName]}</Text>
             </ScrollView>
           </View>
 
           <Separator/>
 
           <Slider
-            style={{marginLeft: 10, marginRight:10, width: '95%', height: '5%'}}
+            style={{marginLeft: 3*PixelRatio.get(), marginRight: 3*PixelRatio.get(), width: '95%', height: '5%'}}
             minimumValue={0}
             maximumValue={duration}
             value={position}
@@ -438,24 +438,24 @@ export default function App() {
             onSlidingComplete={(position)=>handleSeek(position)}
           />
           <View style={{flexDirection: 'row'}}>
-            <Text style={{paddingLeft: 15, fontWeight: 'bold' }}>{timeConversion(position)}</Text>
-            <Text style={{marginLeft: 'auto', paddingRight: 15, fontWeight: 'bold' }}>{timeConversion(duration)}</Text>
+            <Text style={{paddingLeft: 7*PixelRatio.get(), fontWeight: 'bold' }}>{timeConversion(position)}</Text>
+            <Text style={{marginLeft: 'auto', paddingRight: 7*PixelRatio.get(), fontWeight: 'bold' }}>{timeConversion(duration)}</Text>
           </View>
           <View style={styles.musicControl}>
 
             <TouchableOpacity onPress={() => skipBack()}>
-              <Ionicons name="md-play-skip-back-sharp" size={34} color="black"  backgroundColor="#7CA1B4"/>
+              <Ionicons name="md-play-skip-back-sharp" size={15*PixelRatio.get()} color="black"  backgroundColor="#7CA1B4"/>
             </TouchableOpacity>
             
             <TouchableOpacity onPress={() => handlePlayPause()}>
               {isPlaying ?
-                (<AntDesign name="pausecircleo" size={70} color="black" backgroundColor="#7CA1B4"/>) :
-                (<AntDesign name="playcircleo" size={70} color="black" backgroundColor="#7CA1B4"/>)
+                (<AntDesign name="pausecircleo" size={30*PixelRatio.get()} color="black" backgroundColor="#7CA1B4"/>) :
+                (<AntDesign name="playcircleo" size={30*PixelRatio.get()} color="black" backgroundColor="#7CA1B4"/>)
               }
             </TouchableOpacity>
 
             <TouchableOpacity onPress={() => skipForward()}>
-              <Ionicons name="ios-play-skip-forward-sharp" size={34} color="black"  backgroundColor="#7CA1B4"/>
+              <Ionicons name="ios-play-skip-forward-sharp" size={15*PixelRatio.get()} color="black"  backgroundColor="#7CA1B4"/>
             </TouchableOpacity>
           
           </View>
@@ -469,44 +469,46 @@ export default function App() {
 const styles = StyleSheet.create({
   musicControl: {
     flex: 1,
-    marginVertical: '10%',
-    marginHorizontal: '10%',
+    marginVertical: 10*PixelRatio.get(),
+    marginHorizontal: 20*PixelRatio.get(),
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center'
   },
   textTitle: {
     color: 'black',
-    fontSize: 30,
+    fontSize: 12*PixelRatio.get(),
     fontWeight: 'bold',
     textAlign: 'center',
-    paddingTop: '5%'
+    paddingTop: 5*PixelRatio.get(),
+    paddingHorizontal: 5*PixelRatio.get(),
+    paddingEnd: 10*PixelRatio.get()
   },
   backButton: {
-    paddingLeft: '10%',
-    paddingTop: '12%',
+    paddingLeft: 10*PixelRatio.get(),
+    paddingTop: 20*PixelRatio.get(),
     flexDirection: 'row'
   },
   separator: {
-    marginVertical: 14
+    marginVertical: 5*PixelRatio.get()
   },
   imageStyle: {
-    width: 126, 
-    height: 156, 
-    borderRadius: 50,
+    width: 45*PixelRatio.get(), 
+    height: 60*PixelRatio.get(), 
+    borderRadius: 20*PixelRatio.get(),
     overflow: 'hidden',
-    borderWidth: 2,
+    borderWidth: 1*PixelRatio.get(),
     borderColor: 'white'
   },
   homeRow: {
-    paddingHorizontal: '12%',
+    paddingHorizontal: 10*PixelRatio.get(),
     flexDirection: 'row', 
     justifyContent: 'space-between'
   },
   buttonName: {
     color: 'white', 
-    paddingTop: 5, 
-    fontSize: 15, 
+    paddingTop: 1*PixelRatio.get(), 
+    fontSize: 7*PixelRatio.get(), 
     fontWeight: 'bold'
   }
 });
