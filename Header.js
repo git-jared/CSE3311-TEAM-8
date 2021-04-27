@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     headerTitle: {
-        color: 'black',
+        color: 'white',
         fontSize: 15*PixelRatio.get(),
         fontWeight: 'bold'
     }
